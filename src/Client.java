@@ -9,11 +9,11 @@ import java.net.UnknownHostException;
  * @author Tobin Rosenau
  *
  */
-public class Main {
+public class Client {
 	static Socket sock; 
 	public static void main(String[] args) throws IOException, UnknownHostException {
 		// Start a Socket on localhost port 6001
-		sock= new Socket("localhost",6001);
+		sock= new Socket("localhost",6002);
 		//Closes the Server when the Program is closed;
 		  Runtime.getRuntime().addShutdownHook(new Thread()
 			{
