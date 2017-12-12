@@ -4,6 +4,7 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
 import java.net.UnknownHostException;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 /**
@@ -12,7 +13,10 @@ import java.util.Scanner;
  */
 public class Client {
 	static Socket sock; 
+	
 	public static void main(String[] args) throws IOException, UnknownHostException {
+		//init vars
+		int option = 0;
 		// Start a Socket on localhost port 6002
 		sock= new Socket("localhost",6002);
 		 PrintWriter Ausgabe= new PrintWriter(sock.getOutputStream(),true);
@@ -21,7 +25,13 @@ public class Client {
 		//Closes the Server when the Program is closed;
 		  Scanner scanner = new Scanner(System.in);
 		  System.out.print("Wähle eine Option aus 1:Erstellen 2:Anzeigen 3:Löschen 4:Suchen : ");
-		  int option = scanner.nextInt();
+		  try {
+		  option = scanner.nextInt();
+		  }catch (InputMismatchException ie) {
+			  System.out.println("Gib eine Zahl ein und kein wort");
+			  sock.close();
+			  System.exit(0);
+		  }
 		  if(option == 1) {
 			  //Create a StringBuilder and fill it in Json Format with the User input
 			  StringBuilder sb = new StringBuilder();
