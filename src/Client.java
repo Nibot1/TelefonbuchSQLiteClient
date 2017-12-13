@@ -116,6 +116,8 @@ public class Client {
 				}
 				i++;
 			}
+			}else {
+				System.out.println("Dein Telefonbuch ist leer");
 			}
 
 			scanner.close();
