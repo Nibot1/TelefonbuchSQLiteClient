@@ -53,7 +53,7 @@ public class Client {
 		if (option == 1) {
 			// Create a StringBuilder and fill it in Json Format with the User input
 			StringBuilder sb = new StringBuilder();
-			System.out.print("Gib die Daten von dem neuen Kontakt ein.");
+			System.out.println("Gib die Daten von dem neuen Kontakt ein.");
 			sb.append("{");
 			System.out.print("Vorname: ");
 			sb.append("\"Vorname\":\"" + scanner.next() + "\",");
