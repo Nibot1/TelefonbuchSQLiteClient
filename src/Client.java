@@ -90,8 +90,9 @@ public class Client {
 			Ausgabe.println("2");
 			// Reads the answer from the Server
 			String S = Eingabe.readLine();
-			System.out.println(S);
+			//System.out.println(S);
 			// Parse the JsonString to an JsonArray
+			if(!S.equals("[]")) {
 			JSONArray kontakte = new JSONArray(S);
 			// Prints the answer from the Server
 			int i = 0;
@@ -114,6 +115,7 @@ public class Client {
 					e.printStackTrace();
 				}
 				i++;
+			}
 			}
 
 			scanner.close();
