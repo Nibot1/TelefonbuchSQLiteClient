@@ -24,7 +24,7 @@ public class Client {
 	      BufferedReader Eingabe= new BufferedReader(PortLeser);
 		//Closes the Server when the Program is closed;
 		  Scanner scanner = new Scanner(System.in);
-		  System.out.print("Wähle eine Option aus 1:Erstellen 2:Anzeigen 3:Löschen 4:Suchen : ");
+		  System.out.print("WÃ¤hle eine Option aus 1:Erstellen 2:Anzeigen 3:LÃ¶schen 4:Suchen : ");
 		  try {
 		  option = scanner.nextInt();
 		  }catch (InputMismatchException ie) {
@@ -41,8 +41,8 @@ public class Client {
 			  sb.append("\"Vorname\":\""+scanner.next()+"\",");
 			  System.out.print("Nachname: ");
 			  sb.append("\"Nachname\":\""+scanner.next()+"\",");
-			  System.out.print("Straße: ");
-			  sb.append("\"Straße\":\""+scanner.next()+"\",");
+			  System.out.print("StraÃŸe: ");
+			  sb.append("\"StraÃŸe\":\""+scanner.next()+"\",");
 			  System.out.print("Hausnummer: ");
 			  sb.append("\"Hausnummer\":\""+scanner.next()+"\",");
 			  System.out.print("Postleitzahl: ");
@@ -77,7 +77,7 @@ public class Client {
 			  
 		  }if(option == 3) {
 			//Send a String to the Server
-		      Ausgabe.println("löschen");
+		      Ausgabe.println("lï¿½schen");
 		      //Reads the answer from  the Server
 		      String S=Eingabe.readLine();
 		      //Prints the answer from the Server
