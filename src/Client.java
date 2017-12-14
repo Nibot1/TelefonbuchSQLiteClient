@@ -1,4 +1,5 @@
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
@@ -8,20 +9,42 @@ import java.net.UnknownHostException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+
 import org.json.*;
+import org.w3c.dom.Document;
 
 public class Client {
 	static Socket sock;
-
+	static int port = 6000;
+	static String ip = "localhost";
 	public static void main(String[] args) throws IOException, UnknownHostException {
 		// init vars
 		int option = 0;
+		//Read config file
+				try {
+				File file = null;
+				file = new File("config.xml");
+				DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory
+				        .newInstance();
+				DocumentBuilder documentBuilder = documentBuilderFactory.newDocumentBuilder();
+				Document document = documentBuilder.parse(file);
+				try {
+				port = Integer.parseInt(document.getElementsByTagName("port").item(0).getTextContent());
+				}catch(Exception e) {
+					System.out.println("Bitte Überprüfen sie ob in der Konfigurationsdatei eine Zahl als Port eingegeben ist.");
+				}
+				ip = document.getElementsByTagName("server-ip").item(0).getTextContent();
+				}catch(Exception e) {
+					e.printStackTrace();
+				}
 		// Start a Socket on localhost port 6000
 		try {
-		sock = new Socket("localhost", 6000);
+		sock = new Socket(ip, port);
 		}catch(ConnectException ce) {
 			System.out.println("Fehler keine verbindung zum Server möglich");
-			System.out.println("Starte bitte zuerst den Server auf port 6000");
+			System.out.println("Starte bitte zuerst den Server");
 			System.exit(0);
 		}
 		PrintWriter Ausgabe = new PrintWriter(sock.getOutputStream(), true);

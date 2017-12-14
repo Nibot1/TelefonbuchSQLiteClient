@@ -1,0 +1,5 @@
+<?xml version="1.0"?>
+<config>
+<port>6001</port>
+<server-ip>localhost</server-ip>
+</config>
