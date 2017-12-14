@@ -142,6 +142,9 @@ public class Client {
 			Ausgabe.println(scanner.next());
 			// Reads the answer from the Server
 			String S = Eingabe.readLine();
+			if(S.equals("[]")) {
+				System.out.println("Kein Ergebnis gefunden");
+			}
 			// Parse the JsonString to an JsonArray
 			JSONArray kontakte = new JSONArray(S);
 			// Prints the answer from the Server
