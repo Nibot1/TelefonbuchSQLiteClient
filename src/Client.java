@@ -32,7 +32,7 @@ public class Client {
 				try {
 				port = Integer.parseInt(document.getElementsByTagName("port").item(0).getTextContent());
 				}catch(Exception e) {
-					System.out.println("Bitte ÃœberprÃ¼fen sie ob in der Konfigurationsdatei eine Zahl als Port eingegeben ist.");
+					System.out.println("Bitte Überprüfen sie ob in der Konfigurationsdatei eine Zahl als Port eingegeben ist.");
 				}
 				ip = document.getElementsByTagName("server-ip").item(0).getTextContent();
 				}catch(Exception e) {
@@ -42,7 +42,7 @@ public class Client {
 		try {
 		sock = new Socket(ip, port);
 		}catch(ConnectException ce) {
-			System.out.println("Fehler keine verbindung zum Server mÃ¶glich");
+			System.out.println("Fehler keine verbindung zum Server möglich");
 			System.out.println("Starte bitte zuerst den Server");
 			System.exit(0);
 		}
@@ -63,7 +63,7 @@ public class Client {
 		// Start user input listener
 		Scanner scanner = new Scanner(System.in);
 		// Ask the User to input an action
-		System.out.print("WÃ¤hle eine Option aus 1:Erstellen 2:Anzeigen 3:LÃ¶schen 4:Suchen : ");
+		System.out.print("Wähle eine Option aus 1:Erstellen 2:Anzeigen 3:Löschen 4:Suchen : ");
 		// catch the Userinput
 		try {
 			option = scanner.nextInt();
