@@ -20,7 +20,6 @@ public class Client {
 	static int port = 6000;
 	static String ip = "localhost";
 	public static void main(String[] args) throws IOException, UnknownHostException {
-		// init vars
 		int option = 0;
 		//Read config file
 				try {
