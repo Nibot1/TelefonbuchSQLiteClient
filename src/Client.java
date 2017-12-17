@@ -25,6 +25,7 @@ public class Client {
 				try {
 				File file = null;
 				file = new File("config.xml");
+				if(file.exists()) {
 				DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory
 				        .newInstance();
 				DocumentBuilder documentBuilder = documentBuilderFactory.newDocumentBuilder();
@@ -35,6 +36,9 @@ public class Client {
 					System.out.println("Bitte ‹berpr¸fen sie ob in der Konfigurationsdatei eine Zahl als Port eingegeben ist.");
 				}
 				ip = document.getElementsByTagName("server-ip").item(0).getTextContent();
+				}else {
+					System.out.println("Keine Konfigurationsdatei gefunden");
+				}
 				}catch(Exception e) {
 					e.printStackTrace();
 				}
@@ -81,7 +85,7 @@ public class Client {
 			sb.append("\"Vorname\":\"" + scanner.next() + "\",");
 			System.out.print("Nachname: ");
 			sb.append("\"Nachname\":\"" + scanner.next() + "\",");
-			System.out.print("Stra√üe: ");
+			System.out.print("Straﬂe: ");
 			sb.append("\"Strasse\":\"" + scanner.next() + "\",");
 			System.out.print("Hausnummer: ");
 			sb.append("\"Hausnummer\":\"" + scanner.next() + "\",");
@@ -124,7 +128,7 @@ public class Client {
 					System.out.println("Id:                 " + kontakt.getInt("id"));
 					System.out.println("Vorname:            " + kontakt.getString("Vorname"));
 					System.out.println("Nachname:           " + kontakt.getString("Nachname"));
-					System.out.println("Stra√üe, Hausnummer: " + kontakt.getString("Stra√üe") + ", "
+					System.out.println("Straﬂe, Hausnummer: " + kontakt.getString("Strasse") + ", "
 							+ kontakt.getString("Hausnummer"));
 					System.out.println(
 							"PLZ, Ort:           " + kontakt.getString("Plz") + ", " + kontakt.getString("Ort"));
@@ -148,7 +152,7 @@ public class Client {
 			// Send the command to the Server
 			Ausgabe.println("3");
 			//Get userinput
-			System.out.print("Geben sie die ID des zu L√∂schenden Kontaktes an: ");
+			System.out.print("Geben sie die ID des zu Lˆschenden Kontaktes an: ");
 			Ausgabe.println(scanner.nextInt());
 			// Reads the answer from the Server
 			String S = Eingabe.readLine();
@@ -177,7 +181,7 @@ public class Client {
 					System.out.println("Id:                 " + kontakt.getInt("id"));
 					System.out.println("Vorname:            " + kontakt.getString("Vorname"));
 					System.out.println("Nachname:           " + kontakt.getString("Nachname"));
-					System.out.println("Stra√üe, Hausnummer: " + kontakt.getString("Stra√üe") + ", "
+					System.out.println("Straﬂe, Hausnummer: " + kontakt.getString("Strasse") + ", "
 							+ kontakt.getString("Hausnummer"));
 					System.out.println(
 							"PLZ, Ort:           " + kontakt.getString("Plz") + ", " + kontakt.getString("Ort"));
