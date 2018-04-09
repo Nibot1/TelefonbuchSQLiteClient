@@ -33,7 +33,7 @@ public class Client {
 				try {
 				port = Integer.parseInt(document.getElementsByTagName("port").item(0).getTextContent());
 				}catch(Exception e) {
-					System.out.println("Bitte Überprüfen sie ob in der Konfigurationsdatei eine Zahl als Port eingegeben ist.");
+					System.out.println("Bitte ï¿½berprï¿½fen sie ob in der Konfigurationsdatei eine Zahl als Port eingegeben ist.");
 				}
 				ip = document.getElementsByTagName("server-ip").item(0).getTextContent();
 				}else {
@@ -46,7 +46,7 @@ public class Client {
 		try {
 		sock = new Socket(ip, port);
 		}catch(ConnectException ce) {
-			System.out.println("Fehler keine verbindung zum Server möglich");
+			System.out.println("Fehler keine verbindung zum Server mï¿½glich");
 			System.out.println("Starte bitte zuerst den Server");
 			System.exit(0);
 		}
@@ -67,7 +67,7 @@ public class Client {
 		// Start user input listener
 		Scanner scanner = new Scanner(System.in);
 		// Ask the User to input an action
-		System.out.print("Wähle eine Option aus 1:Erstellen 2:Anzeigen 3:Löschen 4:Suchen : ");
+		System.out.print("Wï¿½hle eine Option aus 1:Erstellen 2:Anzeigen 3:Lï¿½schen 4:Suchen : ");
 		// catch the Userinput
 		try {
 			option = scanner.nextInt();
@@ -85,7 +85,7 @@ public class Client {
 			sb.append("\"Vorname\":\"" + scanner.next() + "\",");
 			System.out.print("Nachname: ");
 			sb.append("\"Nachname\":\"" + scanner.next() + "\",");
-			System.out.print("Straße: ");
+			System.out.print("Straï¿½e: ");
 			sb.append("\"Strasse\":\"" + scanner.next() + "\",");
 			System.out.print("Hausnummer: ");
 			sb.append("\"Hausnummer\":\"" + scanner.next() + "\",");
@@ -119,29 +119,7 @@ public class Client {
 			//System.out.println(S);
 			// Parse the JsonString to an JsonArray
 			if(!S.equals("[]")) {
-			JSONArray kontakte = new JSONArray(S);
-			// Prints the answer from the Server
-			int i = 0;
-			while (i <= kontakte.length() - 1) {
-				try {
-					JSONObject kontakt = kontakte.getJSONObject(i);
-					System.out.println("Id:                 " + kontakt.getInt("id"));
-					System.out.println("Vorname:            " + kontakt.getString("Vorname"));
-					System.out.println("Nachname:           " + kontakt.getString("Nachname"));
-					System.out.println("Straße, Hausnummer: " + kontakt.getString("Strasse") + ", "
-							+ kontakt.getString("Hausnummer"));
-					System.out.println(
-							"PLZ, Ort:           " + kontakt.getString("Plz") + ", " + kontakt.getString("Ort"));
-					System.out.println("Tel.:               " + kontakt.getString("Telefonnummer"));
-					System.out.println("Fax.:               " + kontakt.getString("Faxnummer"));
-					System.out.println("Handynr.:           " + kontakt.getString("Handynummer"));
-					System.out.println("Email:              " + kontakt.getString("Emailadresse"));
-					System.out.println();
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-				i++;
-			}
+			printKontakt(S);
 			}else {
 				System.out.println("Dein Telefonbuch ist leer");
 			}
@@ -152,7 +130,7 @@ public class Client {
 			// Send the command to the Server
 			Ausgabe.println("3");
 			//Get userinput
-			System.out.print("Geben sie die ID des zu Löschenden Kontaktes an: ");
+			System.out.print("Geben sie die ID des zu Lï¿½schenden Kontaktes an: ");
 			Ausgabe.println(scanner.nextInt());
 			// Reads the answer from the Server
 			String S = Eingabe.readLine();
@@ -171,8 +149,19 @@ public class Client {
 			if(S.equals("[]")) {
 				System.out.println("Kein Ergebnis gefunden");
 			}
-			// Parse the JsonString to an JsonArray
-			JSONArray kontakte = new JSONArray(S);
+			printKontakt(S);
+			
+			}
+			scanner.close();
+
+		} else {
+			scanner.close();
+		}
+		scanner.close();
+	}
+	public void printKontakt(String S){
+	// Parse the JsonString to an JsonArray
+		JSONArray kontakte = new JSONArray(S);
 			// Prints the answer from the Server
 			int i = 0;
 			while (i <= kontakte.length() - 1) {
@@ -181,7 +170,7 @@ public class Client {
 					System.out.println("Id:                 " + kontakt.getInt("id"));
 					System.out.println("Vorname:            " + kontakt.getString("Vorname"));
 					System.out.println("Nachname:           " + kontakt.getString("Nachname"));
-					System.out.println("Straße, Hausnummer: " + kontakt.getString("Strasse") + ", "
+					System.out.println("Straï¿½e, Hausnummer: " + kontakt.getString("Strasse") + ", "
 							+ kontakt.getString("Hausnummer"));
 					System.out.println(
 							"PLZ, Ort:           " + kontakt.getString("Plz") + ", " + kontakt.getString("Ort"));
@@ -195,11 +184,5 @@ public class Client {
 				}
 				i++;
 			}
-			scanner.close();
-
-		} else {
-			scanner.close();
-		}
-		scanner.close();
 	}
 }
